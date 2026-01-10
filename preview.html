@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>תצוגה בלייב - דפי עבודה במתמטיקה</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {tex: {inlineMath: [['$', '$']], displayMath: [['$$', '$$']]}};
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Assistant:wght@400;600;700&display=swap');
+        * {box-sizing: border-box; margin: 0; padding: 0;}
+        body {
+            font-family: 'Heebo', 'Assistant', 'Arial Hebrew', sans-serif;
+            direction: rtl;
+            background: #f0f0f0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #003366;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #003366;
+            padding-bottom: 15px;
+        }
+        .worksheet-item {
+            margin: 15px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            border-right: 4px solid #007bff;
+            transition: transform 0.2s;
+        }
+        .worksheet-item:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .worksheet-link {
+            text-decoration: none;
+            color: #333;
+            display: block;
+        }
+        .worksheet-link h3 {
+            color: #003366;
+            margin-bottom: 5px;
+        }
+        .worksheet-link p {
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 דפי עבודה במתמטיקה - תצוגה בלייב</h1>
+        <h2>בחר דף עבודה לצפייה:</h2>
+        <div class="worksheet-item">
+            <a href="preview_pages/kavba_a1_graph_reading.html" class="worksheet-link">
+                <h3>קריאת גרף תנועה</h3>
+                <p>גרף תנועה בירושלים - 6 סעיפים מלאים</p>
+            </a>
+        </div>
+        <div class="worksheet-item">
+            <a href="preview_pages/kavba_a1_slope_table.html" class="worksheet-link">
+                <h3>משמעות השיפוע דרך טבלה</h3>
+                <p>טבלת ערכים - הבנת השיפוע - 6 סעיפים מלאים</p>
+            </a>
+        </div>
+        <div class="worksheet-item">
+            <a href="preview_pages/kavba_a1_50_questions_coefficients.html" class="worksheet-link">
+                <h3>50 שאלות על מקדמים</h3>
+                <p>50 שאלות מגוונות בסיפורים יומיומיים</p>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

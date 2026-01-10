@@ -1,0 +1,21 @@
+# תלויות Python ליצירת דפי עבודה במתמטיקה להדפסה ב-A4
+
+# יצירת PDF - כלים חזקים ביותר
+pypandoc-binary>=1.16.0
+pypandoc>=1.11
+pdfkit>=1.0.0
+markdown>=3.4.0
+markdown-it-py>=3.0.0
+weasyprint>=60.0  # מנוע PDF חזק מאוד עם תמיכה ב-CSS ו-RTL
+
+# חישובים מתמטיים וגרפים
+numpy>=1.24.0
+matplotlib>=3.7.0
+sympy>=1.12
+scipy>=1.10.0
+
+# עיבוד תמונות
+Pillow>=10.0.0
+
+# תמיכה ב-LaTeX Math
+latex>=0.7.0

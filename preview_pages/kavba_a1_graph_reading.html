@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>תצוגה בלייב - דף עבודה</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {tex: {inlineMath: [['$', '$']], displayMath: [['$$', '$$']]}};
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Assistant:wght@400;600;700&display=swap');
+        * {box-sizing: border-box; margin: 0; padding: 0;}
+        body {
+            font-family: 'Heebo', 'Assistant', 'Arial Hebrew', sans-serif;
+            direction: rtl;
+            background: #f0f0f0;
+            padding: 20px;
+        }
+        .page {
+            max-width: 21cm;
+            margin: 0 auto;
+            background: white;
+            padding: 2.5cm 2cm;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            min-height: 29.7cm;
+        }
+        h1 {font-size: 18pt; border-bottom: 2px solid #333; padding-bottom: 0.5em; margin-bottom: 1em; color: #003366;}
+        h2 {font-size: 16pt; border-bottom: 1px solid #ddd; margin-top: 1.5em; margin-bottom: 0.8em; color: #003366;}
+        h3 {font-size: 15pt; margin-top: 1.5em; margin-bottom: 0.7em; color: #003366; background-color: #e0f7fa; border-right: 5px solid #007bff; padding: 5px 10px; margin-right: -10px;}
+        p {text-align: justify; margin: 0.8em 0; line-height: 1.8;}
+        img {max-width: 100%; height: auto; display: block; margin: 1em auto; border: 3px solid #003366; box-shadow: 5px 5px 15px rgba(0,0,0,0.3);}
+        table {width: 100%; border-collapse: collapse; margin: 1em 0;}
+        table th, table td {border: 1px solid #333; padding: 0.5em; text-align: right;}
+        table th {background-color: #f0f0f0; font-weight: bold;}
+        ul, ol {margin: 0.8em 0; padding-right: 2em;}
+        li {margin: 0.3em 0;}
+        code {font-family: 'Courier New', monospace; background-color: #f5f5f5; padding: 0.2em 0.4em; border-radius: 3px;}
+        pre {background-color: #f5f5f5; padding: 1em; border-radius: 5px; overflow-x: auto;}
+        .math-display {direction: ltr; text-align: center; margin: 1em 0; font-size: 1.1em;}
+        .math-inline {direction: ltr; font-size: 1em;}
+        hr {border: none; border-top: 1px solid #ddd; margin: 1.5em 0;}
+        .back-link {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .back-link:hover {background: #0056b3;}
+        .loading {text-align: center; padding: 50px; font-size: 18pt; color: #666;}
+    </style>
+</head>
+<body>
+    <a href="preview.html" class="back-link">← חזרה לרשימת דפי עבודה</a>
+    <div class="page" id="content"><h1>קריאת גרף תנועה - מרחק וזמן</h1>
+<h2>הוראות</h2>
+<p>ענה על כל השאלות הבאות. השאר מקום לפתרון מפורט תחת כל שאלה.</p>
+<hr />
+<p><strong>שם התלמיד/ה</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>______</p>
+<p><strong>תאריך</strong>: <strong><em>_</em></strong><strong><em>_</em></strong>_</p>
+<hr />
+<h2>הסיטואציה</h2>
+<p>אדם יוצא מביתו בירושלים ומבצע נסיעה מסוימת.</p>
+<p>הגרף שלפניך מתאר את המרחק מהבית בירושלים (בקילומטרים) כפונקציה של הזמן (בשעות), החל מהרגע שיצא מהבית.</p>
+<p><img alt="גרף תנועה" src="assets/graphs/jerusalem_motion_graph.png" /></p>
+<p><strong>הגרף עובר דרך הנקודות המסומנות:</strong><br />
+- נקודה A: (0, 0) - התחלה בבית<br />
+- נקודה B: (1, 4)<br />
+- נקודה C: (2, 4)<br />
+- נקודה D: (3, 8)<br />
+- נקודה E: (4, 6)<br />
+- נקודה F: (5, 6)<br />
+- נקודה G: (6, 0) - חזרה הביתה</p>
+<hr />
+<h3>(א) קריאה ישירה של ערך</h3>
+<p>מה היה המרחק מהבית בירושלים אחרי 3 שעות?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____ ק"מ</p>
+<hr />
+<h3>(ב) מציאת זמן לפי מרחק</h3>
+<p>באיזו שעה (או שעות) המרחק מהבית היה 6 ק"מ?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____ שעות</p>
+<hr />
+<h3>(ג) הבנת משמעות נקודה</h3>
+<p>מה המשמעות של נקודה D במציאות? מה קרה בזמן הזה ומה היה המרחק?</p>
+<p><strong>הסבר</strong>:</p>
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<h3>(ד) הבנת משמעות קטע</h3>
+<p>בחר קטע אחד מהגרף (למשל: מ-A ל-B, או מ-C ל-D, וכו') וכתוב מה הוא אומר על התנועה: האם האדם התרחק מהבית, התקרב אל הבית, או עמד במקום? הסבר.</p>
+<p><strong>הקטע שבחרתי</strong>: מ-<strong><em>_</em></strong> ל-<strong><em>_</em></strong></p>
+<p><strong>הסבר</strong>:</p>
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<h3>(ה) השוואה וחשיבה</h3>
+<p>על פי השיפוע החזותי (התלילות) של הגרף, האם בקטע מ-D ל-E התרחק האדם מהבית יותר מהר מאשר בקטע מ-A ל-B? נמק בעזרת השוואת התלילות.</p>
+<p><strong>נימוק</strong>:</p>
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<h3>(ו) אוריינות מתמטית חכמה בהקשר ירושלים</h3>
+<p>תאר במילים את סדר האירועים מההתחלה עד הסוף לפי נקודות A–G. כתוב משפט אחד שמסכם את המסלול כולו לפי הגרף.</p>
+<p><strong>תיאור האירועים</strong>:</p>
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<p><strong>סיכום המסלול</strong>:</p>
+<hr />
+<hr />
+<hr /></div>
+    <script>
+        // קבלת שם הקובץ מה-URL
+        // Static page for kavba_a1_graph_reading.md
+
+        // ניסיון טעינה עם fetch - נתיב יחסי לשרת
+        const filePath = file.startsWith('/') ? file : '/' + file;
+        console.log('Loading file:', filePath);
+        Promise.resolve("")
+            .then(response => {
+                if (!response.ok) throw new Error('Network response was not ok');
+                return response.text();
+            })
+            .then(text => {
+                // הסרת front matter אם קיים
+                if (text.startsWith('---')) {
+                    const parts = text.split('---', 2);
+                    if (parts.length >= 3) {
+                        text = parts[2].trim();
+                    }
+                }
+
+                console.log('File loaded, length:', text.length);
+                console.log('Marked available:', typeof marked !== 'undefined');
+                
+                // המרת Markdown ל-HTML
+                if (typeof marked !== 'undefined') {
+                    try {
+                        marked.setOptions({
+                            breaks: true,
+                            gfm: true
+                        });
+
+                        let html = marked.parse(text);
+                        console.log('HTML generated, length:', html.length);
+
+                        // עיבוד LaTeX math
+                        html = html.replace(/\$\$([^$]+)\$\$/g, '<div class="math-display">$$$1$$</div>');
+                        html = html.replace(/\$([^$]+)\$/g, '<span class="math-inline">$$$1$</span>');
+
+                        // הצגת התוכן
+                        document.getElementById('content').innerHTML = html;
+                        console.log('Content displayed');
+
+                        // עדכון MathJax אחרי טעינת התוכן
+                        if (window.MathJax && window.MathJax.typesetPromise) {
+                            window.MathJax.typesetPromise().then(() => {
+                                console.log('MathJax rendered');
+                            }).catch(err => {
+                                console.error('MathJax error:', err);
+                            });
+                        }
+                    } catch (e) {
+                        console.error('Error parsing markdown:', e);
+                        document.getElementById('content').innerHTML = '<h1>שגיאה בעיבוד</h1><pre>' + e.message + '</pre><hr><pre>' + text.substring(0, 500) + '</pre>';
+                    }
+                } else {
+                    // אם marked לא זמין, הצגת טקסט גולמי עם פורמט בסיסי
+                    console.warn('marked not available, showing raw text');
+                    document.getElementById('content').innerHTML = '<pre>' + text.replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</pre>';
+                }
+            })
+            .catch(error => {
+                console.error('Error loading file:', error);
+                document.getElementById('content').innerHTML = '<h1>שגיאה</h1><p>לא ניתן לטעון את הקובץ: ' + error.message + '</p><p>אנא בדוק שהשרת רץ ועדכן את הדף.</p><p>נתיב ניסה לטעון: ' + filePath + '</p>';
+            });
+    </script>
+</body>
+</html>
