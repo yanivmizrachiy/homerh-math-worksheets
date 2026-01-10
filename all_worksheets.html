@@ -2,210 +2,32 @@
 <html dir="rtl" lang="he">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>כל דפי העבודה - כיתה ח' - מוכן להדפסה A4</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>
-        window.MathJax = {tex: {inlineMath: [['$', '$']], displayMath: [['$$', '$$']]}};
-    </script>
+    <script>window.MathJax = {tex: {inlineMath: [['$', '$']], displayMath: [['$$', '$$']]}};</script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Assistant:wght@400;600;700&display=swap');
-        
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        
-        @page {
-            size: A4;
-            margin: 0;
-        }
-        
-        body {
-            font-family: 'Heebo', 'Assistant', 'Arial Hebrew', sans-serif;
-            direction: rtl;
-            background: #f0f0f0;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .a4-page {
-            width: 210mm;
-            min-height: 297mm;
-            margin: 0 auto 10mm auto;
-            background: white;
-            padding: 25mm 20mm;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            page-break-after: always;
-            overflow: visible;
-        }
-        
-        @media print {
-            body {
-                background: white;
-                padding: 0;
-            }
-            
-            .a4-page {
-                margin: 0;
-                box-shadow: none;
-                page-break-after: always;
-                page-break-inside: avoid;
-            }
-            
-            .no-print {
-                display: none;
-            }
-        }
-        
-        .worksheet-content {
-            width: 100%;
-        }
-        
-        .worksheet-title {
-            text-align: center;
-            font-size: 20pt;
-            font-weight: bold;
-            color: #003366;
-            margin-bottom: 1em;
-            padding-bottom: 0.5em;
-            border-bottom: 3px solid #003366;
-        }
-        
-        h1 {
-            font-size: 18pt;
-            border-bottom: 2px solid #333;
-            padding-bottom: 0.5em;
-            margin-bottom: 1em;
-            margin-top: 0;
-            color: #003366;
-        }
-        
-        h2 {
-            font-size: 16pt;
-            border-bottom: 1px solid #ddd;
-            margin-top: 1.5em;
-            margin-bottom: 0.8em;
-            color: #003366;
-        }
-        
-        h3 {
-            font-size: 15pt;
-            margin-top: 1.5em;
-            margin-bottom: 0.7em;
-            color: #003366;
-            background-color: #e0f7fa;
-            border-right: 5px solid #007bff;
-            padding: 5px 10px;
-            margin-right: -10px;
-            page-break-after: avoid;
-        }
-        
-        p {
-            text-align: justify;
-            margin: 0.8em 0;
-            line-height: 1.8;
-        }
-        
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 1em auto;
-            border: 3px solid #003366;
-            box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
-            page-break-inside: avoid;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1em 0;
-            page-break-inside: avoid;
-        }
-        
-        table th, table td {
-            border: 1px solid #333;
-            padding: 0.5em;
-            text-align: right;
-        }
-        
-        table th {
-            background-color: #f0f0f0;
-            font-weight: bold;
-        }
-        
-        ul, ol {
-            margin: 0.8em 0;
-            padding-right: 2em;
-        }
-        
-        li {
-            margin: 0.3em 0;
-        }
-        
-        code {
-            font-family: 'Courier New', monospace;
-            background-color: #f5f5f5;
-            padding: 0.2em 0.4em;
-            border-radius: 3px;
-        }
-        
-        pre {
-            background-color: #f5f5f5;
-            padding: 1em;
-            border-radius: 5px;
-            overflow-x: auto;
-            page-break-inside: avoid;
-        }
-        
-        .math-display {
-            direction: ltr;
-            text-align: center;
-            margin: 1em 0;
-            font-size: 1.1em;
-        }
-        
-        .math-inline {
-            direction: ltr;
-            font-size: 1em;
-        }
-        
-        hr {
-            border: none;
-            border-top: 1px solid #ddd;
-            margin: 1.5em 0;
-        }
-        
-        strong {
-            font-weight: bold;
-        }
-        
-        .print-button {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: #007bff;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16pt;
-            cursor: pointer;
-            z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-        
-        .print-button:hover {
-            background: #0056b3;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&display=swap');
+        * {box-sizing: border-box; margin: 0; padding: 0;}
+        @page {size: A4; margin: 0;}
+        body {font-family: 'Heebo', sans-serif; direction: rtl; background: #f0f0f0; padding: 0;}
+        .a4-page {width: 210mm; min-height: 297mm; margin: 0 auto 10mm; background: white; padding: 25mm 20mm; box-shadow: 0 0 10px rgba(0,0,0,0.1); page-break-after: always;}
+        @media print {body {background: white;} .a4-page {margin: 0; box-shadow: none; page-break-after: always;}}
+        h1 {font-size: 18pt; border-bottom: 2px solid #333; padding-bottom: 0.5em; margin-bottom: 1em; color: #003366;}
+        h2 {font-size: 16pt; border-bottom: 1px solid #ddd; margin-top: 1.5em; margin-bottom: 0.8em; color: #003366;}
+        h3 {font-size: 15pt; margin-top: 1.5em; margin-bottom: 0.7em; color: #003366; background: #e0f7fa; border-right: 5px solid #007bff; padding: 5px 10px; margin-right: -10px;}
+        p {text-align: justify; margin: 0.8em 0; line-height: 1.8;}
+        img {max-width: 100%; height: auto; display: block; margin: 1em auto; border: 3px solid #003366;}
+        table {width: 100%; border-collapse: collapse; margin: 1em 0;}
+        table th, table td {border: 1px solid #333; padding: 0.5em; text-align: right;}
+        table th {background: #f0f0f0; font-weight: bold;}
+        hr {border: none; border-top: 1px solid #ddd; margin: 1.5em 0;}
+        .print-btn {position: fixed; top: 20px; left: 20px; background: #007bff; color: white; padding: 15px 30px; border: none; border-radius: 5px; font-size: 16pt; cursor: pointer; z-index: 1000;}
+        @media print {.print-btn {display: none;}}
     </style>
 </head>
 <body>
-    <button class="print-button no-print" onclick="window.print()">🖨️ הדפס את כל הדפים</button>
-<div class="a4-page"><div class="worksheet-content"><h1 class="worksheet-title">קריאת גרף תנועה - מרחק וזמן</h1><h1>קריאת גרף תנועה - מרחק וזמן</h1>
+    <button class="print-btn" onclick="window.print()">🖨️ הדפס את כל הדפים</button>
+<div class="a4-page"><h1 style="text-align: center; font-size: 20pt; margin-bottom: 1em;">קריאת גרף תנועה - מרחק וזמן</h1><h1>קריאת גרף תנועה - מרחק וזמן</h1>
 <h2>הוראות</h2>
 <p>ענה על כל השאלות הבאות. השאר מקום לפתרון מפורט תחת כל שאלה.</p>
 <hr />
@@ -215,7 +37,7 @@
 <h2>הסיטואציה</h2>
 <p>אדם יוצא מביתו בירושלים ומבצע נסיעה מסוימת.</p>
 <p>הגרף שלפניך מתאר את המרחק מהבית בירושלים (בקילומטרים) כפונקציה של הזמן (בשעות), החל מהרגע שיצא מהבית.</p>
-<p><img alt="גרף תנועה" src="assets/graphs/jerusalem_motion_graph.png" /></p>
+<p><img alt="גרף תנועה" src="../assets/graphs/jerusalem_motion_graph.png" /></p>
 <p><strong>הגרף עובר דרך הנקודות המסומנות:</strong><br />
 - נקודה A: (0, 0) - התחלה בבית<br />
 - נקודה B: (1, 4)<br />
@@ -292,8 +114,8 @@
 <p><strong>סיכום המסלול</strong>:</p>
 <hr />
 <hr />
-<hr /></div></div>
-<div class="a4-page"><div class="worksheet-content"><h1 class="worksheet-title">משמעות השיפוע באמצעות טבלת ערכים</h1><h1>משמעות השיפוע באמצעות טבלת ערכים</h1>
+<hr /></div>
+<div class="a4-page"><h1 style="text-align: center; font-size: 20pt; margin-bottom: 1em;">משמעות השיפוע באמצעות טבלת ערכים</h1><h1>משמעות השיפוע באמצעות טבלת ערכים</h1>
 <h2>הוראות</h2>
 <p>ענה על כל השאלות הבאות. השאר מקום לפתרון מפורט תחת כל שאלה.</p>
 <hr />
@@ -408,8 +230,8 @@
 <hr />
 <hr />
 <hr />
-<hr /></div></div>
-<div class="a4-page"><div class="worksheet-content"><h1 class="worksheet-title">50 שאלות על מקדמים בפונקציה קווית</h1><h1>50 שאלות על מקדמים בפונקציה קווית - סיפורים יומיומיים</h1>
+<hr /></div>
+<div class="a4-page"><h1 style="text-align: center; font-size: 20pt; margin-bottom: 1em;">50 שאלות על מקדמים בפונקציה קווית</h1><h1>50 שאלות על מקדמים בפונקציה קווית - סיפורים יומיומיים</h1>
 <h2>הוראות</h2>
 <p>ענה על כל השאלות הבאות. השאר מקום לפתרון מפורט תחת כל שאלה.</p>
 <hr />
@@ -605,8 +427,7 @@
 <hr />
 <p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
 <hr />
-</div></div>
-<div class="a4-page"><div class="worksheet-content"><h1 class="worksheet-title">50 שאלות על מקדמים בפונקציה קווית (המשך - דף 1)</h1><h3>שאלה 28</h3>
+<h3>שאלה 28</h3>
 <p>חברה מתחילה עם 50 עובדים ומגייסת 4 עובדים כל חודש. אם $x$ הוא מספר החודשים ו-$y$ הוא מספר העובדים, מה אומר המספר 50 במשוואה?</p>
 <p><strong>דרך פתרון</strong>:</p>
 <hr />
@@ -765,7 +586,5 @@
 <p><strong>דרך פתרון</strong>:</p>
 <hr />
 <hr />
-<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p></div></div>
-
-</body>
-</html>
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p></div>
+</body></html>
