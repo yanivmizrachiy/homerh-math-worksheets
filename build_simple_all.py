@@ -16,7 +16,7 @@ def build_simple_all():
         ('worksheets/grade-8/kavba_a1_slope_table.md', 'משמעות השיפוע באמצעות טבלת ערכים'),
         ('worksheets/grade-8/kavba_a1_50_questions_coefficients.md', '50 שאלות על מקדמים בפונקציה קווית')
     ]
-    
+
     html = '''<!DOCTYPE html>
 <html dir="rtl" lang="he">
 <head>
@@ -47,19 +47,19 @@ def build_simple_all():
 <body>
     <button class="print-btn" onclick="window.print()">🖨️ הדפס את כל הדפים</button>
 '''
-    
+
     for md_file, title in worksheets:
         content = Path(md_file).read_text(encoding='utf-8')
         if content.startswith('---'):
             content = content.split('---', 2)[2].strip()
-        
+
         html_body = markdown.markdown(content, extensions=['fenced_code', 'tables', 'nl2br'])
         html_body = html_body.replace('src="assets/', 'src="../assets/')
-        
+
         html += f'<div class="a4-page"><h1 style="text-align: center; font-size: 20pt; margin-bottom: 1em;">{title}</h1>{html_body}</div>\n'
-    
+
     html += '</body></html>'
-    
+
     Path('all_worksheets.html').write_text(html, encoding='utf-8')
     print('✅ Created all_worksheets.html')
 
