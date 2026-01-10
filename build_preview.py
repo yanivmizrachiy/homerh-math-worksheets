@@ -42,6 +42,9 @@ def build_preview_pages():
         # עיבוד LaTeX math
         html_body = html_body.replace('$$', '$$$$')  # Escape for template
 
+        # תיקון נתיב תמונות עבור GitHub Pages - מ-preview_pages צריך לעלות 2 תיקיות
+        html_body = html_body.replace('src="assets/', 'src="../../assets/')
+
         # יצירת HTML מלא
         html_output = template.replace(
             '<div class="page" id="content">\n        <div class="loading">⏳ טוען...</div>\n    </div>',
