@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>כל דפי העבודה - כיתה ח' - מוכן להדפסה A4</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {tex: {inlineMath: [['$', '$']], displayMath: [['$$', '$$']]}};
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Assistant:wght@400;600;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        
+        body {
+            font-family: 'Heebo', 'Assistant', 'Arial Hebrew', sans-serif;
+            direction: rtl;
+            background: #f0f0f0;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .a4-page {
+            width: 210mm;
+            min-height: 297mm;
+            max-height: 297mm;
+            margin: 0 auto 10mm auto;
+            background: white;
+            padding: 25mm 20mm;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            page-break-after: always;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .a4-page {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+                page-break-inside: avoid;
+            }
+            
+            .no-print {
+                display: none;
+            }
+        }
+        
+        .worksheet-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .worksheet-title {
+            text-align: center;
+            font-size: 20pt;
+            font-weight: bold;
+            color: #003366;
+            margin-bottom: 1em;
+            padding-bottom: 0.5em;
+            border-bottom: 3px solid #003366;
+        }
+        
+        h1 {
+            font-size: 18pt;
+            border-bottom: 2px solid #333;
+            padding-bottom: 0.5em;
+            margin-bottom: 1em;
+            margin-top: 0;
+            color: #003366;
+        }
+        
+        h2 {
+            font-size: 16pt;
+            border-bottom: 1px solid #ddd;
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            color: #003366;
+        }
+        
+        h3 {
+            font-size: 15pt;
+            margin-top: 1.5em;
+            margin-bottom: 0.7em;
+            color: #003366;
+            background-color: #e0f7fa;
+            border-right: 5px solid #007bff;
+            padding: 5px 10px;
+            margin-right: -10px;
+            page-break-after: avoid;
+        }
+        
+        p {
+            text-align: justify;
+            margin: 0.8em 0;
+            line-height: 1.8;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 1em auto;
+            border: 3px solid #003366;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+            page-break-inside: avoid;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1em 0;
+            page-break-inside: avoid;
+        }
+        
+        table th, table td {
+            border: 1px solid #333;
+            padding: 0.5em;
+            text-align: right;
+        }
+        
+        table th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+        
+        ul, ol {
+            margin: 0.8em 0;
+            padding-right: 2em;
+        }
+        
+        li {
+            margin: 0.3em 0;
+        }
+        
+        code {
+            font-family: 'Courier New', monospace;
+            background-color: #f5f5f5;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+        }
+        
+        pre {
+            background-color: #f5f5f5;
+            padding: 1em;
+            border-radius: 5px;
+            overflow-x: auto;
+            page-break-inside: avoid;
+        }
+        
+        .math-display {
+            direction: ltr;
+            text-align: center;
+            margin: 1em 0;
+            font-size: 1.1em;
+        }
+        
+        .math-inline {
+            direction: ltr;
+            font-size: 1em;
+        }
+        
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 1.5em 0;
+        }
+        
+        strong {
+            font-weight: bold;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #007bff;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16pt;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        
+        .print-button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button no-print" onclick="window.print()">🖨️ הדפס את כל הדפים</button>
+<div class="a4-page"><div class="worksheet-content"><h1 class="worksheet-title">קריאת גרף תנועה - מרחק וזמן</h1><h1>קריאת גרף תנועה - מרחק וזמן</h1>
+<h2>הוראות</h2>
+<p>ענה על כל השאלות הבאות. השאר מקום לפתרון מפורט תחת כל שאלה.</p>
+<hr />
+<p><strong>שם התלמיד/ה</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>______</p>
+<p><strong>תאריך</strong>: <strong><em>_</em></strong><strong><em>_</em></strong>_</p>
+<hr />
+<h2>הסיטואציה</h2>
+<p>אדם יוצא מביתו בירושלים ומבצע נסיעה מסוימת.</p>
+<p>הגרף שלפניך מתאר את המרחק מהבית בירושלים (בקילומטרים) כפונקציה של הזמן (בשעות), החל מהרגע שיצא מהבית.</p>
+<p><img alt="גרף תנועה" src="assets/graphs/jerusalem_motion_graph.png" /></p>
+<p><strong>הגרף עובר דרך הנקודות המסומנות:</strong><br />
+- נקודה A: (0, 0) - התחלה בבית<br />
+- נקודה B: (1, 4)<br />
+- נקודה C: (2, 4)<br />
+- נקודה D: (3, 8)<br />
+- נקודה E: (4, 6)<br />
+- נקודה F: (5, 6)<br />
+- נקודה G: (6, 0) - חזרה הביתה</p>
+<hr />
+<h3>(א) קריאה ישירה של ערך</h3>
+<p>מה היה המרחק מהבית בירושלים אחרי 3 שעות?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____ ק"מ</p>
+<hr />
+<h3>(ב) מציאת זמן לפי מרחק</h3>
+<p>באיזו שעה (או שעות) המרחק מהבית היה 6 ק"מ?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____ שעות</p>
+<hr />
+<h3>(ג) הבנת משמעות נקודה</h3>
+<p>מה המשמעות של נקודה D במציאות? מה קרה בזמן הזה ומה היה המרחק?</p>
+<p><strong>הסבר</strong>:</p>
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<h3>(ד) הבנת משמעות קטע</h3>
+<p>בחר קטע אחד מהגרף (למשל: מ-A ל-B, או מ-C ל-D, וכו') וכתוב מה הוא אומר על התנועה: האם האדם התרחק מהבית, התקרב אל הבית, או עמד במקום? הסבר.</p>
+<p><strong>הקטע שבחרתי</strong>: מ-<strong><em>_</em></strong> ל-<strong><em>_</em></strong></p>
+<p><strong>הסבר</strong>:</p>
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<h3>(ה) השוואה וחשיבה</h3>
+<p>על פי השיפוע החזותי (התלילות) של הגרף, האם בקטע מ-D ל-E התרחק האדם מהבית יותר מהר מאשר בקטע מ-A ל-B? נמק בעזרת השוואת התלילות.</p>
+<p><strong>נימוק</strong>:</p>
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<h3>(ו) אוריינות מתמטית חכמה בהקשר ירושלים</h3>
+<p>תאר במילים את סדר האירועים מההתחלה עד הסוף לפי נקודות A–G. כתוב משפט אחד שמסכם את המסלול כולו לפי הגרף.</p>
+<p><strong>תיאור האירועים</strong>:</p>
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<p><strong>סיכום המסלול</strong>:</p>
+<hr />
+<hr />
+<hr /></div></div>
+<div class="a4-page"><div class="worksheet-content"><h1 class="worksheet-title">משמעות השיפוע באמצעות טבלת ערכים</h1><h1>משמעות השיפוע באמצעות טבלת ערכים</h1>
+<h2>הוראות</h2>
+<p>ענה על כל השאלות הבאות. השאר מקום לפתרון מפורט תחת כל שאלה.</p>
+<hr />
+<p><strong>שם התלמיד/ה</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>______</p>
+<p><strong>תאריך</strong>: <strong><em>_</em></strong><strong><em>_</em></strong>_</p>
+<hr />
+<h2>הסיטואציה</h2>
+<p>בפונקציה קווית, בכל פעם ש-$x$ גדל ב-1, הערך של $y$ גדל או קטן בערך קבוע. הערך הקבוע הזה נקרא <strong>השיפוע</strong> של הפונקציה.</p>
+<p>לפניך טבלת ערכים של פונקציה קווית:</p>
+<table>
+<thead>
+<tr>
+<th>$x$</th>
+<th>$y$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>6</td>
+</tr>
+<tr>
+<td>2</td>
+<td>__</td>
+</tr>
+<tr>
+<td>3</td>
+<td>__</td>
+</tr>
+<tr>
+<td>4</td>
+<td>__</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>(א) זיהוי השינוי הקבוע</h3>
+<p>בכמה משתנה הערך של $y$ בכל פעם ש-$x$ גדל ב-1? השלם את הטבלה כדי לענות על השאלה.</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<hr />
+<hr />
+<p><strong>תשובה</strong>: בכל פעם ש-$x$ גדל ב-1, $y$ <strong><em>_</em></strong><strong><em>_ ב-</em></strong><strong><em>_</em></strong>_</p>
+<hr />
+<h3>(ב) השלמת הטבלה</h3>
+<p>השלם את הטבלה:</p>
+<table>
+<thead>
+<tr>
+<th>$x$</th>
+<th>$y$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>6</td>
+</tr>
+<tr>
+<td>2</td>
+<td>__</td>
+</tr>
+<tr>
+<td>3</td>
+<td>__</td>
+</tr>
+<tr>
+<td>4</td>
+<td>__</td>
+</tr>
+</tbody>
+</table>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<hr />
+<hr />
+<h3>(ג) משפט השלמה - הגדרת השיפוע</h3>
+<p>השלם את המשפט הבא:</p>
+<p>בפונקציה קווית, <strong>השיפוע</strong> הוא המספר שקובע כמה <strong><em>_</em></strong>____</p>
+<p>ככל ש-$x$ גדל ב-1.</p>
+<p><strong>תשובה</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong></p>
+<hr />
+<h3>(ד) משפט השלמה - כיוון הגרף</h3>
+<p>השלם את המשפט הבא:</p>
+<p>אם השיפוע חיובי, אז ככל ש-$x$ גדל, הערך של $y$ <strong><em>_</em></strong><strong><em>_, והגרף </em></strong><strong><em>_</em></strong>_.</p>
+<p><strong>תשובה</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong></p>
+<hr />
+<h3>(ה) קשר לגרף</h3>
+<p>אם היית מצייר את הגרף של הפונקציה הזאת, האם הגרף היה עולה או יורד? הסבר לפי הטבלה.</p>
+<p><strong>הסבר</strong>:</p>
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<p><strong>תשובה</strong>: הגרף <strong><em>_</em></strong>____</p>
+<hr />
+<h3>(ו) אוריינות מתמטית</h3>
+<p>כתוב משפט אחד שמסביר מה אומר השיפוע בפונקציה קווית, ללא שימוש בנוסחאות.</p>
+<p><strong>הסבר</strong>:</p>
+<hr />
+<hr />
+<hr />
+<hr />
+<hr /></div></div>
+<div class="a4-page"><div class="worksheet-content"><h1 class="worksheet-title">50 שאלות על מקדמים בפונקציה קווית</h1><h1>50 שאלות על מקדמים בפונקציה קווית - סיפורים יומיומיים</h1>
+<h2>הוראות</h2>
+<p>ענה על כל השאלות הבאות. השאר מקום לפתרון מפורט תחת כל שאלה.</p>
+<hr />
+<p><strong>שם התלמיד/ה</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>______</p>
+<p><strong>תאריך</strong>: <strong><em>_</em></strong><strong><em>_</em></strong>_</p>
+<hr />
+<h3>שאלה 1</h3>
+<p>תומר קונה חבילת מים ב-5 שקלים ומוסיף 3 שקלים לכל בקבוק נוסף שהוא קונה. אם $x$ הוא מספר הבקבוקים הנוספים ו-$y$ הוא המחיר הכולל, מהו המקדם של $x$ במשוואה?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 2</h3>
+<p>רחל יוצאת לטיול ומתחילה במרחק 10 ק"מ מהבית. היא הולכת במהירות קבועה של 5 ק"מ לשעה. אם $x$ הוא מספר השעות ו-$y$ הוא המרחק מהבית, מה אומר המספר 5 במשוואה?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 3</h3>
+<p>דוד מתחיל עם 50 שקלים בכיסו ומוציא 4 שקלים כל יום. אם $x$ הוא מספר הימים ו-$y$ הוא הכסף שנשאר, מה אומר המספר 50 במשוואה?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 4</h3>
+<p>שרה קונה כרטיס רכבת ב-15 שקלים ועוד 2 שקלים לכל תחנה נוספת. אם $x$ הוא מספר התחנות הנוספות ו-$y$ הוא המחיר הכולל, מה המקדם של $x$?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 5</h3>
+<p>מיכאל יושב במרחק 3 מטרים מקו הזינוק ומתחיל לרוץ במהירות של 6 מטרים לשנייה. אם $x$ הוא מספר השניות ו-$y$ הוא המרחק מקו הזינוק, מה אומר המספר 6 במשוואה?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 6</h3>
+<p>תחילה יש 20 אנשים בחדר, וכל שעה מגיעים 3 אנשים נוספים. אם $x$ הוא מספר השעות ו-$y$ הוא מספר האנשים בחדר, מה אומר המספר 20 במשוואה?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 7</h3>
+<p>קופסת צעצועים מכילה 30 צעצועים, וכל יום מוסיפים 8 צעצועים. אם $x$ הוא מספר הימים ו-$y$ הוא מספר הצעצועים בקופסה, מה המקדם של $x$?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 8</h3>
+<p>אורח מתחיל במרחק 12 ק"מ מהעיר ומתקרב אליה במהירות של 4 ק"מ לשעה. אם $x$ הוא מספר השעות ו-$y$ הוא המרחק מהעיר, מה אומר המקדם של $x$?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 9</h3>
+<p>מעלית מתחילה בקומה 0 ועולה 2 קומות כל דקה. אם $x$ הוא מספר הדקות ו-$y$ הוא מספר הקומה, מה אומר המספר 0 במשוואה?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 10</h3>
+<p>חשבון טלפון כולל תשלום קבוע של 25 שקלים ועוד 0.5 שקלים לכל דקת שיחה. אם $x$ הוא מספר דקות השיחה ו-$y$ הוא המחיר הכולל, מה המקדם של $x$?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 11</h3>
+<p>מכל מים מכיל 100 ליטרים, וכל שעה שואבים ממנו 7 ליטרים. אם $x$ הוא מספר השעות ו-$y$ הוא כמות המים שנשארה, מה אומר המספר 100 במשוואה?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 12</h3>
+<p>בבנק יש 500 שקלים, וכל שבוע מוסיפים 50 שקלים. אם $x$ הוא מספר השבועות ו-$y$ הוא הכסף בבנק, מה המקדם של $x$?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 13</h3>
+<p>טנק דלק מכיל 40 ליטרים, וכל קילומטר נצרכים 0.1 ליטר. אם $x$ הוא מספר הקילומטרים ו-$y$ הוא כמות הדלק שנשארה, מה אומר המקדם של $x$?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 14</h3>
+<p>מעלית מתחילה בקומה 5 ויורדת 3 קומות כל דקה. אם $x$ הוא מספר הדקות ו-$y$ הוא מספר הקומה, מה אומר המספר 5 במשוואה?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 15</h3>
+<p>עץ מתחיל בגובה 2 מטרים וגדל 0.3 מטרים כל חודש. אם $x$ הוא מספר החודשים ו-$y$ הוא גובה העץ, מה המקדם של $x$?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 16</h3>
+<p>חשבון חשמל כולל תשלום קבוע של 30 שקלים ועוד 0.8 שקלים לכל קילוואט. אם $x$ הוא מספר הקילוואטים ו-$y$ הוא המחיר הכולל, מה אומר המספר 30 במשוואה?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 17</h3>
+<p>במדידה, הטמפרטורה מתחילה ב-15 מעלות ועולה 2 מעלות כל שעה. אם $x$ הוא מספר השעות ו-$y$ הוא הטמפרטורה, מה המקדם של $x$?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 18</h3>
+<p>קופסת ביצים מכילה 12 ביצים, וכל יום מוסיפים 6 ביצים. אם $x$ הוא מספר הימים ו-$y$ הוא מספר הביצים בקופסה, מה אומר המספר 12 במשוואה?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 19</h3>
+<p>רוכב אופניים מתחיל במהירות 10 קמ"ש ומאיץ 3 קמ"ש כל שנייה. אם $x$ הוא מספר השניות ו-$y$ הוא המהירות, מה המקדם של $x$?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 20</h3>
+<p>מכולת מכילה 200 מוצרים, וכל יום נמכרים 15 מוצרים. אם $x$ הוא מספר הימים ו-$y$ הוא מספר המוצרים שנשארו, מה אומר המספר 200 במשוואה?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 21</h3>
+<p>משרד מכיל 8 שולחנות, וכל חדש מוסיפים 2 שולחנות. אם $x$ הוא מספר החדשים ו-$y$ הוא מספר השולחנות, מה המקדם של $x$?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 22</h3>
+<p>חיסכון בבנק מתחיל ב-1000 שקלים וגדל ב-25 שקלים כל חודש. אם $x$ הוא מספר החודשים ו-$y$ הוא סכום החיסכון, מה אומר המקדם של $x$?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 23</h3>
+<p>אקווריום מכיל 50 ליטרים, וכל יום מוסיפים 5 ליטרים. אם $x$ הוא מספר הימים ו-$y$ הוא כמות המים, מה אומר המספר 50 במשוואה?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 24</h3>
+<p>טיל מתחיל בגובה 0 מטרים ועולה 50 מטרים כל שנייה. אם $x$ הוא מספר השניות ו-$y$ הוא הגובה, מה המקדם של $x$?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 25</h3>
+<p>חנות ספרים מכילה 300 ספרים, וכל יום נקנים 12 ספרים. אם $x$ הוא מספר הימים ו-$y$ הוא מספר הספרים שנשארו, מה המקדם של $x$?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 26</h3>
+<p>כרטיס אוטובוס עולה 5 שקלים ועוד 1.5 שקלים לכל קילומטר נוסף. אם $x$ הוא מספר הקילומטרים הנוספים ו-$y$ הוא המחיר הכולל, מה אומר המספר 5 במשוואה?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 27</h3>
+<p>בריכה מכילה 200 ליטרים, וכל שעה מתאדים 8 ליטרים. אם $x$ הוא מספר השעות ו-$y$ הוא כמות המים שנשארה, מה המקדם של $x$?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+</div></div>
+<div class="a4-page"><div class="worksheet-content"><h1 class="worksheet-title">50 שאלות על מקדמים בפונקציה קווית (המשך - דף 1)</h1><h3>שאלה 28</h3>
+<p>חברה מתחילה עם 50 עובדים ומגייסת 4 עובדים כל חודש. אם $x$ הוא מספר החודשים ו-$y$ הוא מספר העובדים, מה אומר המספר 50 במשוואה?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 29</h3>
+<p>מכונית מתחילה במהירות 0 קמ"ש ומאיצה 5 קמ"ש כל שנייה. אם $x$ הוא מספר השניות ו-$y$ הוא המהירות, מה המקדם של $x$?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 30</h3>
+<p>מטבח מכיל 20 כלים, וכל יום מוסיפים 3 כלים. אם $x$ הוא מספר הימים ו-$y$ הוא מספר הכלים, מה אומר המקדם של $x$?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 31</h3>
+<p>חשבון אינטרנט כולל תשלום קבוע של 40 שקלים ועוד 0.3 שקלים לכל ג'יגה. אם $x$ הוא מספר הג'יגות ו-$y$ הוא המחיר הכולל, מה המקדם של $x$?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 32</h3>
+<p>מצבר מכיל 100 אחוזים טעינה, וכל שעה יורדים 10 אחוזים. אם $x$ הוא מספר השעות ו-$y$ הוא אחוז הטעינה, מה אומר המספר 100 במשוואה?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 33</h3>
+<p>כיתה מתחילה עם 25 תלמידים ומגיעים 2 תלמידים כל שבוע. אם $x$ הוא מספר השבועות ו-$y$ הוא מספר התלמידים, מה המקדם של $x$?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 34</h3>
+<p>מסוק מתחיל בגובה 100 מטרים ויורד 15 מטרים כל שנייה. אם $x$ הוא מספר השניות ו-$y$ הוא הגובה, מה אומר המקדם של $x$?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 35</h3>
+<p>מלאי בחנות מכיל 150 מוצרים, וכל יום נמכרים 8 מוצרים. אם $x$ הוא מספר הימים ו-$y$ הוא מספר המוצרים שנשארו, מה אומר המספר 150 במשוואה?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 36</h3>
+<p>כרטיס קולנוע עולה 35 שקלים ועוד 2 שקלים לכל כרטיס נוסף. אם $x$ הוא מספר הכרטיסים הנוספים ו-$y$ הוא המחיר הכולל, מה המקדם של $x$?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 37</h3>
+<p>טנק מים מכיל 500 ליטרים, וכל יום מוסיפים 25 ליטרים. אם $x$ הוא מספר הימים ו-$y$ הוא כמות המים, מה אומר המקדם של $x$?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 38</h3>
+<p>טמפרטורה מתחילה ב-20 מעלות ויורדת 1.5 מעלות כל שעה. אם $x$ הוא מספר השעות ו-$y$ הוא הטמפרטורה, מה המקדם של $x$?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 39</h3>
+<p>קופסת ממתקים מכילה 40 ממתקים, וכל יום אוכלים 5 ממתקים. אם $x$ הוא מספר הימים ו-$y$ הוא מספר הממתקים שנשארו, מה אומר המספר 40 במשוואה?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 40</h3>
+<p>רוכב אופניים מתחיל במרחק 5 ק"מ מהיעד ומתקרב אליו במהירות 12 קמ"ש. אם $x$ הוא מספר השעות ו-$y$ הוא המרחק מהיעד, מה המקדם של $x$?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 41</h3>
+<p>מחשב מתחיל עם 100 אחוזים סוללה, וכל שעה יורדים 15 אחוזים. אם $x$ הוא מספר השעות ו-$y$ הוא אחוז הסוללה, מה אומר המקדם של $x$?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 42</h3>
+<p>חברה מתחילה עם 0 לקוחות ומשיגה 20 לקוחות כל חודש. אם $x$ הוא מספר החודשים ו-$y$ הוא מספר הלקוחות, מה אומר המספר 0 במשוואה?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 43</h3>
+<p>מגש מכיל 24 כוסות, וכל יום מוסיפים 6 כוסות. אם $x$ הוא מספר הימים ו-$y$ הוא מספר הכוסות, מה המקדם של $x$?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 44</h3>
+<p>גובה הר מתחיל ב-0 מטרים ועולה 30 מטרים כל קילומטר. אם $x$ הוא מספר הקילומטרים ו-$y$ הוא הגובה, מה המקדם של $x$?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 45</h3>
+<p>חשבון גז כולל תשלום קבוע של 50 שקלים ועוד 0.4 שקלים לכל קוב. אם $x$ הוא מספר הקובים ו-$y$ הוא המחיר הכולל, מה אומר המספר 50 במשוואה?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 46</h3>
+<p>מצלמה מתחילה עם 1000 תמונות וצילמה 50 תמונות כל יום. אם $x$ הוא מספר הימים ו-$y$ הוא מספר התמונות שנשארו, מה המקדם של $x$?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 47</h3>
+<p>רוכב אופניים מתחיל במהירות 0 קמ"ש ומאיץ 2 קמ"ש כל שנייה. אם $x$ הוא מספר השניות ו-$y$ הוא המהירות, מה אומר המקדם של $x$?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 48</h3>
+<p>מטמון מכיל 100 מטבעות, וכל יום מוצאים 4 מטבעות. אם $x$ הוא מספר הימים ו-$y$ הוא מספר המטבעות שנשארו, מה אומר המספר 100 במשוואה?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 49</h3>
+<p>טמפרטורה מתחילה ב-25 מעלות ועולה 0.5 מעלות כל דקה. אם $x$ הוא מספר הדקות ו-$y$ הוא הטמפרטורה, מה המקדם של $x$?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p>
+<hr />
+<h3>שאלה 50</h3>
+<p>תלמיד מתחיל עם 0 נקודות ומקבל 10 נקודות כל שבוע. אם $x$ הוא מספר השבועות ו-$y$ הוא מספר הנקודות, מה אומר המקדם של $x$ במשוואה?</p>
+<p><strong>דרך פתרון</strong>:</p>
+<hr />
+<hr />
+<p><strong>תשובה</strong>: <strong><em>_</em></strong>____</p></div></div>
+
+</body>
+</html>
