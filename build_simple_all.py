@@ -55,7 +55,7 @@ def build_simple_all():
 
         html_body = markdown.markdown(content, extensions=['fenced_code', 'tables', 'nl2br'])
         html_body = html_body.replace('src="assets/', 'src="../assets/')
-        
+
         # הסרת כותרת כפולה - אם יש <h1> בתחילת html_body, נסיר אותו
         if html_body.strip().startswith('<h1>'):
             # מוצאים את סוף ה-h1 הראשון
