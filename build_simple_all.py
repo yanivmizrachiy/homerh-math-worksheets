@@ -55,6 +55,13 @@ def build_simple_all():
 
         html_body = markdown.markdown(content, extensions=['fenced_code', 'tables', 'nl2br'])
         html_body = html_body.replace('src="assets/', 'src="../assets/')
+        
+        # הסרת כותרת כפולה - אם יש <h1> בתחילת html_body, נסיר אותו
+        if html_body.strip().startswith('<h1>'):
+            # מוצאים את סוף ה-h1 הראשון
+            h1_end = html_body.find('</h1>')
+            if h1_end != -1:
+                html_body = html_body[h1_end + 5:].strip()
 
         html += f'<div class="a4-page"><h1 style="text-align: center; font-size: 20pt; margin-bottom: 1em;">{title}</h1>{html_body}</div>\n'
 

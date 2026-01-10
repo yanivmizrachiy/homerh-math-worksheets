@@ -9,11 +9,11 @@
 - ✅ `all_worksheets.html` - 29,974 bytes
 
 ### 2. תוכן HTML - תקין:
-- ✅ **דף קריאת גרף**: 
+- ✅ **דף קריאת גרף**:
   - 6 שאלות (סעיפים א-ו) ✅
   - תג תמונה: `../../assets/graphs/jerusalem_motion_graph.png` ✅
   - 8,809 תווים בעברית ✅
-  
+
 - ✅ **דף משמעות השיפוע**:
   - טבלת ערכים ✅
   - 6 שאלות (סעיפים א-ו) ✅
@@ -26,7 +26,7 @@
 ### 3. תיקונים שבוצעו:
 - ✅ **תיקון נתיב תמונה ב-`preview_pages/kavba_a1_graph_reading.html`**
   - נתיב: `../../assets/graphs/jerusalem_motion_graph.png` ✅
-  
+
 - ✅ **תיקון נתיב תמונה ב-`all_worksheets.html`**
   - נתיב: `../assets/graphs/jerusalem_motion_graph.png` ✅
 

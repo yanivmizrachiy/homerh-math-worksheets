@@ -9,11 +9,11 @@
 - ✅ `all_worksheets.html` - 29,974 bytes
 
 ### 2. תוכן HTML - תקין:
-- ✅ **דף קריאת גרף**: 
+- ✅ **דף קריאת גרף**:
   - 6 שאלות (סעיפים א-ו)
   - תג תמונה עם נתיב תקין
   - 8,809 תווים בעברית
-  
+
 - ✅ **דף משמעות השיפוע**:
   - טבלת ערכים
   - 6 שאלות (סעיפים א-ו)
@@ -27,7 +27,7 @@
 - ✅ **תיקון 1**: נתיב תמונה ב-`preview_pages/kavba_a1_graph_reading.html`
   - מ: `assets/graphs/jerusalem_motion_graph.png`
   - ל: `../../assets/graphs/jerusalem_motion_graph.png`
-  
+
 - ✅ **תיקון 2**: עדכון `build_preview.py` לנתיב נכון
 
 - ✅ **תיקון 3**: נתיב תמונה ב-`all_worksheets.html` (תיקון קודם)
