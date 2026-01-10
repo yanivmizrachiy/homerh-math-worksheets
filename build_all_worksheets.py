@@ -22,17 +22,17 @@ def process_markdown_to_html(md_content: str) -> str:
         parts = md_content.split('---', 2)
         if len(parts) >= 3:
             md_content = parts[2].strip()
-    
+
     # המרת Markdown ל-HTML
     html = markdown.markdown(md_content, extensions=['fenced_code', 'tables', 'nl2br'])
-    
+
     # עיבוד תמונות - תיקון נתיבים
     html = re.sub(
         r'<img src="([^"]+)"',
         r'<img src="../\1"',
         html
     )
-    
+
     return html
 
 
@@ -41,15 +41,15 @@ def split_into_a4_pages(html_content: str, title: str) -> list:
     # חלוקה לפי h2 או h3 - כל חלק גדול לדף A4 נפרד
     # נחלק לפי h2 (כותרות גדולות) - כל h2 מתחיל דף חדש
     parts = re.split(r'(<h2[^>]*>.*?</h2>)', html_content, flags=re.DOTALL)
-    
+
     pages = []
     current_page = f'<div class="worksheet-content"><h1 class="worksheet-title">{title}</h1>'
     page_num = 1
-    
+
     for i, part in enumerate(parts):
         if not part.strip():
             continue
-        
+
         # אם זה h2, זה תחילת חלק חדש - בדוק אם צריך דף חדש
         if part.startswith('<h2'):
             # אם הדף הנוכחי כבר ארוך, סיים אותו
@@ -58,9 +58,9 @@ def split_into_a4_pages(html_content: str, title: str) -> list:
                 pages.append(current_page)
                 current_page = f'<div class="worksheet-content"><h1 class="worksheet-title">{title} (המשך - דף {page_num})</h1>'
                 page_num += 1
-        
+
         current_page += part
-        
+
         # אם הדף ארוך מדי, חתוך אותו
         if len(current_page) > 8000:
             # מצא את הסעיף האחרון לפני 8000 תווים
@@ -71,18 +71,18 @@ def split_into_a4_pages(html_content: str, title: str) -> list:
                 page_content += '</div>'
                 pages.append(page_content)
                 page_num += 1
-    
+
     # הוסף את הדף האחרון
     if current_page:
         current_page += '</div>'
         pages.append(current_page)
-    
+
     return pages if pages else [f'<div class="worksheet-content"><h1 class="worksheet-title">{title}</h1>{html_content}</div>']
 
 
 def build_all_worksheets():
     """בניית דף HTML אחד עם כל דפי העבודה"""
-    
+
     # קריאת כל דפי העבודה
     worksheets = [
         {
@@ -98,7 +98,7 @@ def build_all_worksheets():
             'title': '50 שאלות על מקדמים בפונקציה קווית'
         }
     ]
-    
+
     # קריאת תבנית HTML
     html_template_start = '''<!DOCTYPE html>
 <html dir="rtl" lang="he">
@@ -113,18 +113,18 @@ def build_all_worksheets():
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Assistant:wght@400;600;700&display=swap');
-        
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-        
+
         @page {
             size: A4;
             margin: 0;
         }
-        
+
         body {
             font-family: 'Heebo', 'Assistant', 'Arial Hebrew', sans-serif;
             direction: rtl;
@@ -132,7 +132,7 @@ def build_all_worksheets():
             padding: 0;
             margin: 0;
         }
-        
+
         .a4-page {
             width: 210mm;
             min-height: 297mm;
@@ -146,31 +146,31 @@ def build_all_worksheets():
             display: flex;
             flex-direction: column;
         }
-        
+
         @media print {
             body {
                 background: white;
                 padding: 0;
             }
-            
+
             .a4-page {
                 margin: 0;
                 box-shadow: none;
                 page-break-after: always;
                 page-break-inside: avoid;
             }
-            
+
             .no-print {
                 display: none;
             }
         }
-        
+
         .worksheet-content {
             flex: 1;
             display: flex;
             flex-direction: column;
         }
-        
+
         .worksheet-title {
             text-align: center;
             font-size: 20pt;
@@ -180,7 +180,7 @@ def build_all_worksheets():
             padding-bottom: 0.5em;
             border-bottom: 3px solid #003366;
         }
-        
+
         h1 {
             font-size: 18pt;
             border-bottom: 2px solid #333;
@@ -189,7 +189,7 @@ def build_all_worksheets():
             margin-top: 0;
             color: #003366;
         }
-        
+
         h2 {
             font-size: 16pt;
             border-bottom: 1px solid #ddd;
@@ -197,7 +197,7 @@ def build_all_worksheets():
             margin-bottom: 0.8em;
             color: #003366;
         }
-        
+
         h3 {
             font-size: 15pt;
             margin-top: 1.5em;
@@ -209,13 +209,13 @@ def build_all_worksheets():
             margin-right: -10px;
             page-break-after: avoid;
         }
-        
+
         p {
             text-align: justify;
             margin: 0.8em 0;
             line-height: 1.8;
         }
-        
+
         img {
             max-width: 100%;
             height: auto;
@@ -225,41 +225,41 @@ def build_all_worksheets():
             box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
             page-break-inside: avoid;
         }
-        
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 1em 0;
             page-break-inside: avoid;
         }
-        
+
         table th, table td {
             border: 1px solid #333;
             padding: 0.5em;
             text-align: right;
         }
-        
+
         table th {
             background-color: #f0f0f0;
             font-weight: bold;
         }
-        
+
         ul, ol {
             margin: 0.8em 0;
             padding-right: 2em;
         }
-        
+
         li {
             margin: 0.3em 0;
         }
-        
+
         code {
             font-family: 'Courier New', monospace;
             background-color: #f5f5f5;
             padding: 0.2em 0.4em;
             border-radius: 3px;
         }
-        
+
         pre {
             background-color: #f5f5f5;
             padding: 1em;
@@ -267,29 +267,29 @@ def build_all_worksheets():
             overflow-x: auto;
             page-break-inside: avoid;
         }
-        
+
         .math-display {
             direction: ltr;
             text-align: center;
             margin: 1em 0;
             font-size: 1.1em;
         }
-        
+
         .math-inline {
             direction: ltr;
             font-size: 1em;
         }
-        
+
         hr {
             border: none;
             border-top: 1px solid #ddd;
             margin: 1.5em 0;
         }
-        
+
         strong {
             font-weight: bold;
         }
-        
+
         .print-button {
             position: fixed;
             top: 20px;
@@ -304,7 +304,7 @@ def build_all_worksheets():
             z-index: 1000;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
-        
+
         .print-button:hover {
             background: #0056b3;
         }
@@ -313,31 +313,31 @@ def build_all_worksheets():
 <body>
     <button class="print-button no-print" onclick="window.print()">🖨️ הדפס את כל הדפים</button>
 '''
-    
+
     html_content = html_template_start
-    
+
     # עיבוד כל דף עבודה
     for ws in worksheets:
         if not ws['file'].exists():
             print(f"Warning: {ws['file']} not found, skipping...")
             continue
-        
+
         print(f"Processing: {ws['title']}")
         content = ws['file'].read_text(encoding='utf-8')
         html_body = process_markdown_to_html(content)
-        
+
         # חלוקה לדפי A4
         pages = split_into_a4_pages(html_body, ws['title'])
-        
+
         # הוספת כל הדפים
         for page_html in pages:
             html_content += f'<div class="a4-page">{page_html}</div>\n'
-    
+
     # סיום HTML
     html_content += '''
 </body>
 </html>'''
-    
+
     # שמירה
     output_file = Path('all_worksheets.html')
     output_file.write_text(html_content, encoding='utf-8')
