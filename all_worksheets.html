@@ -34,15 +34,12 @@
         .a4-page {
             width: 210mm;
             min-height: 297mm;
-            max-height: 297mm;
             margin: 0 auto 10mm auto;
             background: white;
             padding: 25mm 20mm;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
             page-break-after: always;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
+            overflow: visible;
         }
         
         @media print {
@@ -64,9 +61,7 @@
         }
         
         .worksheet-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
+            width: 100%;
         }
         
         .worksheet-title {
